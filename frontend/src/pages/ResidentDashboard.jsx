@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import Chatbot from "../components/Chatbot";
+import Chatbot from "../components/chatbot";
 import "./dashboard.css";
 import {
     LayoutDashboard,
