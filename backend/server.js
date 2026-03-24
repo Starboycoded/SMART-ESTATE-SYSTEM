@@ -1,25 +1,16 @@
-// require('dotenv').config();
-// const app = require("./src/app");
-
-
-// app.listen(5000, () => {
-//   console.log("Backend running on http://localhost:5000");
-//   app.get("/test", (req, res) => {
-//   res.json({ message: "Backend is running and connected!" });
-// });
-
-// });
-// server.js
-require('dotenv').config(); // Load .env variables
+require('dotenv').config(); // Load environment variables
 
 const app = require("./src/app");
 
-// Optional: Add a quick test route here if you want
+// Test route 
 app.get("/test", (req, res) => {
   res.json({ message: "Backend is running and connected!" });
 });
 
-// Start the server
-app.listen(5000, () => {
-  console.log("Backend running on http://localhost:5000");
+// Use Render's port or fallback to 5000 locally
+const PORT = process.env.PORT || 5000;
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });
