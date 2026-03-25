@@ -1,4 +1,5 @@
 const mysql = require('mysql2');
+require('dotenv').config();
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -7,9 +8,17 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
   port: process.env.DB_PORT || 3306,
   ssl: {
-    rejectUnauthorized: false   // ← This is the correct fix for Aiven's self-signed cert
+    rejectUnauthorized: false
+  }
+});
+
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.error('❌ DB ERROR:', err);
+  } else {
+    console.log('✅ Database connected successfully');
+    connection.release();
   }
 });
 
 module.exports = pool.promise();
-```
