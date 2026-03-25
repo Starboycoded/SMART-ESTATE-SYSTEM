@@ -1,23 +1,15 @@
-require("dotenv").config();
-const mysql = require("mysql2");
+const mysql = require('mysql2');
 
-const db = mysql.createPool({
-    host: process.env.DB_HOST || "localhost",
-    user: process.env.DB_USER || "app_user",
-    password: process.env.DB_PASSWORD || "1234",
-    database: process.env.DB_NAME || "smart_estate",
-    port: process.env.DB_PORT || 3306,
-    ssl: process.env.DB_HOST ? { rejectUnauthorized: false } : undefined
-});
-
-// Test connection
-db.getConnection((err, connection) => {
-  if (err) {
-    console.error("❌ DB ERROR:", err);
-  } else {
-    console.log("✅ MySQL Connected!");
-    connection.release();
+const pool = mysql.createPool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 3306,
+  ssl: {
+    rejectUnauthorized: false   // ← This is the correct fix for Aiven's self-signed cert
   }
 });
 
-module.exports = db;
+module.exports = pool.promise();
+```
