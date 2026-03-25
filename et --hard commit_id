@@ -1,0 +1,21 @@
+[33m7f1c6c92[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m backup before sync
+[33ma4775b92[m fix Chatbot import case for deployment
+[33md52d5a56[m downgrade react to 18 for Render
+[33mea094321[m fix sever port for deployment
+[33m3834d7dc[m Add finishing touches to the backend and frontend
+[33m6bbbf2ef[m .env
+[33mfe464c35[m complaint
+[33m86078ae4[m Payment and chatbot
+[33m686f5b7f[m Landing page
+[33m17356626[m Merge pull request #1 from ChideraOgugua/chidera-initial-setup
+[33m19ee69e2[m Merge branch 'main' into chidera-initial-setup
+[33m49a35acb[m Integrated frontend UI, dashboards, routing, and services
+[33m342e4a68[m UI modification
+[33m34467b32[m changes
+[33m37c3658e[m UI change
+[33ma9a0ef80[m changes
+[33m9b6c54b5[m changes
+[33mfd329b11[m change
+[33m5eda3a68[m chore: final clean project state
+[33mcaf726f0[m commit
+[33m1dfbef06[m The Beginning
