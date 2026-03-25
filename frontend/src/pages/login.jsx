@@ -157,7 +157,7 @@ const Login = () => {
               <p>
                 {isRegistering ? "Already have an account?" : "New to SmartEstate?"}{" "}
                 
-                  href="#"
+                <a href="#"
                   onClick={(e) => {
                     e.preventDefault();
                     setIsRegistering(!isRegistering);
