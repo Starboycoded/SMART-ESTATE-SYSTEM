@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Chatbot from "../components/chatbot";
 import "./dashboard.css";
+import { QRCodeSVG } from 'qrcode.react';
 import {
     LayoutDashboard,
     CreditCard,
@@ -270,7 +271,7 @@ const ResidentDashboard = () => {
                         <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} style={{ width: "100%" }} onClick={generateQR}>Generate Code</motion.button>
                         {qrCode && (
                             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} style={{ marginTop: "20px", background: "#f7fafc", padding: "15px", borderRadius: "8px", textAlign: "center", border: "1px dashed #cbd5e0" }}>
-                                <div style={{ fontSize: "1.5rem", fontWeight: "bold", letterSpacing: "2px" }}>{qrCode}</div>
+                               <QRCodeSVG value={qrCode} size={200} />
                                 <p><small>Valid for: {visitDate}</small></p>
                             </motion.div>
                         )}
