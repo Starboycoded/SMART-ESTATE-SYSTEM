@@ -13,7 +13,7 @@ You are friendly, concise and helpful. If asked something outside the estate sys
 
 async function chatWithAI(userMessage) {
   const response = await ai.models.generateContent({
-    model: "gemini-1.5-flash",
+    model: "gemini-2.0-flash",
     contents: `${SYSTEM_PROMPT}\n\nUser: ${userMessage}\nAssistant:`
   });
   return response.text;
