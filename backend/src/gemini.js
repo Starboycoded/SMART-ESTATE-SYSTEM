@@ -1,5 +1,6 @@
-const { GoogleGenAI } = require("@google/genai");
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const Anthropic = require("@anthropic-ai/sdk");
+
+const client = new Anthropic.Anthropic({ apiKey: process.env.CLAUDE_API_KEY });
 
 const SYSTEM_PROMPT = `You are the Smart Estate Assistant, a helpful AI built into the Smart Estate Management System. 
 You help residents of a gated estate in Nigeria with the following features:
@@ -8,15 +9,18 @@ You help residents of a gated estate in Nigeria with the following features:
 - Generate QR Code: Create visitor access QR codes by entering visitor name and visit date
 - Make Complaints: Report maintenance issues or problems to estate management
 - Help: Find emergency contacts for security (0801-234-5678) and estate manager (0809-876-5432)
-
 You are friendly, concise and helpful. If asked something outside the estate system, politely redirect the user to the available features. Always respond in a helpful, professional tone.`;
 
 async function chatWithAI(userMessage) {
-  const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
-    contents: `${SYSTEM_PROMPT}\n\nUser: ${userMessage}\nAssistant:`
+  const response = await client.messages.create({
+    model: "claude-haiku-4-5-20251001",
+    max_tokens: 1024,
+    system: SYSTEM_PROMPT,
+    messages: [
+      { role: "user", content: userMessage }
+    ]
   });
-  return response.text;
+  return response.content[0].text;
 }
 
 module.exports = { chatWithAI };
